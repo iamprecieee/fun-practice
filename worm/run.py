@@ -41,10 +41,12 @@ while is_game_on:
             
         food.change_position()
         
-        
-    if all([food.feed_count != 0, food.feed_count % 1 == 0, not food.pause_mega]):
+    if all([food.feed_count != 0, food.feed_count % 2 == 0, not food.pause_mega]):
         food.create_mega_food()
+        
+    for segment in worm.worm_segments[1:]:
+        if worm.worm_segments[0].distance(segment) < 10:
+            score.reset_score()
     
-
 
 screen.exitonclick()
