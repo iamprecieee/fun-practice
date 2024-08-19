@@ -47,8 +47,12 @@ class Score(Turtle):
         self.update_score()
         
     def get_high_score_value(self):
-        with open('worm/highscore.txt', 'r') as file:
-            self.high_score_value = int(file.read())
+        try:
+            with open('worm/highscore.txt', 'r') as file:
+                self.high_score_value = int(file.read())
+        except:
+            with open('worm/highscore.txt', 'w') as file:
+                file.write('0')
         
     def reset_score(self):
         if self.score_value > self.high_score_value:
